@@ -1,0 +1,84 @@
+/* Couleurs principales */
+:root {
+    --vert-fonce: #4F772D;
+    --vert-clair: #90A955;
+    --rouge: #BC4749;
+    --noir-vert: #132A13;
+    --blanc: #FEFAE0;
+}
+
+/* Style général */
+body {
+    background-color: var(--blanc);
+    color: var(--noir-vert);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.box-text-rgpd {
+    background-color: #FEFAE0;
+    color: var(--noir-vert);
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    border: 1px solid var(--vert-fonce);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Titres principaux */
+h2 {
+    color: var(--vert-fonce);
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Titres de section */
+.section-titre {
+    color: var(--vert-clair);
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Paragraphe standard */
+.section-para {
+    color: var(--noir-vert);
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Listes */
+ul.liste-text {
+    color: var(--noir-vert);
+    margin-left: 20px;
+    list-style: disc;
+}
+
+ul.liste-text li {
+    margin-bottom: 8px;
+}
+
+ul.liste-text li strong {
+    color: var(--vert-fonce);
+}
+
+/* Liens */
+a {
+    color: var(--rouge);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--vert-fonce);
+    text-decoration: underline;
+}
+
+/* Emphase dans le texte */
+strong {
+    color: var(--vert-fonce);
+    font-weight: bold;
+}

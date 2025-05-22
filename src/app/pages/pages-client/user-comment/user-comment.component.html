@@ -1,0 +1,22 @@
+<div class="container mt-5">
+    <div class="col text-center">
+      <a [routerLink]="['/user/command-history', userId]" class="btn btn-success mx-2" style="border:  1px solid #838383;">Historique de vos commandes</a>
+        <a [routerLink]="['/user/cart']" class="btn btn-success mx-2" style="border:  1px solid #838383;">Voir votre Panier</a>
+
+      </div>
+    <h2>Retrouvez vos commentaires ici !</h2>
+    <div *ngFor="let comment of comments" class="card mb-3">
+      <div class="card-header">
+        <h5>{{ comment.title }}</h5>
+      </div>
+      <div class="card-body">
+        <p>{{ comment.description }}</p>
+        <p><strong>Note : </strong>{{ comment.note }}<strong>/5</strong></p>
+      </div>
+
+      <div *ngIf="comments.length === 0">
+        <p>Aucun commentaire à afficher pour le moment.</p>
+      </div>
+    </div>
+  </div>
+  

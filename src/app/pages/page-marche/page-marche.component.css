@@ -1,0 +1,125 @@
+.card 
+{
+    margin: 15px;
+    border-radius: 20px;
+    background-color: #fefae0;
+    border-color: #838383;
+    padding: 15px;
+}
+
+.image-text 
+{
+    display: flex;
+    flex-direction: row;
+}
+.image-marche 
+{
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    width: 90%;
+    margin: 0;
+}
+p
+{
+    margin: 0;
+}
+.marche-description 
+{
+    display: flex;
+    flex-direction: row;
+}
+.card-text 
+{
+    display: flex;
+    margin: 10px;
+}
+h1 
+{
+    text-align: center;
+}
+.lieu-marche 
+{
+    text-align: center;
+}
+.info-marche 
+{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-right: 10px;
+    flex: 1;
+    border-right: #838383 solid 1px;
+}
+.jours 
+{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    padding-left: 10px;
+}
+.carte 
+{
+    text-decoration: none;
+    width: 25rem;
+    height: 15rem;
+    background-color: #FEFAE0;
+    padding: 7px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(79, 79, 79, 0.5);
+    margin: 20px 10px;
+    cursor: pointer;
+}
+.image-commercant 
+{
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    height: 150px;
+    width: 100%;
+    margin: 0;
+}
+.commercant-text 
+{
+    text-align: center;
+}
+.tout-commercant 
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+@media screen and (max-width: 820px) 
+{
+    .marche-commercant 
+    {
+        width: auto;
+        height: auto;
+    }
+    .card-text
+    {
+        display: flex;
+        flex-direction: column;
+    }
+    .info-marche 
+    {
+        border-bottom: solid 1px #838383;
+        border-right: none;
+        text-align: center;
+    }
+    .image-text 
+    {
+        display: flex;
+        flex-direction: column;
+    }
+    .image-marche 
+    {
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+        height: 150px;
+        width: 100%;
+        margin: 0;
+    }
+}

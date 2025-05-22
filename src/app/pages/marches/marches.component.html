@@ -1,0 +1,29 @@
+<div class="body-marches">
+    <div class="tout-marches row">
+        @defer(){
+            @for (item of marches; track $index) 
+            {
+                <a class="card col-3" routerLink="{{item.id}}">
+                    <div class="image-marche" [style.backgroundImage]="'url(' + urlImg + item.imageFileName + ')'"></div>
+                    <div class="card-body">
+                        <h5 class="marche-text">{{item.marcheName}}</h5>
+                        <p class="marche-text">{{item.place}}</p>
+                        <p class="marche-text">De {{item.hourly}}</p>
+                    </div>
+                </a>
+            }
+        }
+        @error {
+            <span>Error</span>
+        }
+        @loading(minimum 1s) {
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div> 
+        }
+        <div class="btn-page">
+            <button class="btn btn-pagination" id="btn-precedent" (click)="getOtherPagesMoins()">Précédent</button>
+            <button class="btn btn-pagination" id="btn-suivant" (click)="getOtherPagesPlus()">Suivant</button>
+        </div>
+    </div>
+</div>

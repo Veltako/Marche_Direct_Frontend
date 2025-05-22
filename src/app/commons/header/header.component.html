@@ -1,0 +1,222 @@
+@if (userRole === 'commercant') 
+{
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="accueil"><img src="images/logo.png" class="logo"/></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="commerce/profil-commerçant">Profil Commerçant</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="commerce/gestion-des-produits">Gestion des Produits</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="commerce/gestion-des-commandes">Gestion des Commandes</a>
+          </li>
+        </ul>
+        <div>
+          <!-- Barre de recherche -->
+          <form class="d-flex" (ngSubmit)="search(searchForm.value)">
+            <input
+              class="search-input me-1"
+              type="search"
+              placeholder="Rechercher..."
+              aria-label="Search"
+              [formControl]="searchForm"
+            />
+          </form>
+
+          <!-- Résultats de la recherche -->
+          <div class="position-relative d-flex flex-column">
+            @if (searchResults.length > 0) {
+              <ul class="search-results p-0">
+                @for (result of searchResults; track $index) {
+                  <li (click)="navigateToResult(result.id)">
+                    <div class="image-marche" [style.backgroundImage]="'url(' + urlImg + result.imageFileName + ')'"></div>
+                    <p>{{ result.productName || result.marcheName || result.nameBusiness }}</p>
+                  </li>
+                }
+              </ul>
+            }
+          </div>
+        </div>
+        @if (isLoggedIn()){
+          <!-- Menu DropDown -->
+          <div class="profile">
+            <img [src]="urlImg + user.imageFileName" class="user-pic"  (click)="toggleMenu()">
+            <div class="sub-menu-wrap" #subMenu>
+              <div class="sub-menu">
+                <div class="user-info">
+                  <img [src]="urlImg + user.imageFileName">
+                  <h3>{{ user.userName }}</h3>
+                </div>
+                <hr>
+
+                <a href="commerce/profil-commerçant" class="sub-menu-link">
+                  <i class="fa-solid fa-user"></i>
+                  <p>Profil</p>
+                </a>
+                <a href="commerce/gestion-des-produits" class="sub-menu-link">
+                  <i class="fa-solid fa-carrot"></i>
+                  <p>Gestion de produits</p>
+                </a>
+                <a href="commerce/gestion-des-commandes" class="sub-menu-link">
+                  <i class="fa-solid fa-boxes-stacked"></i>
+                  <p>Gestion de Commandes</p>
+                </a>
+                <a href="user/:id/command-history" class="sub-menu-link">
+                  <i class="fa-solid fa-store"></i>
+                  <p>Commandes</p>
+                </a>
+                @if (hasRole('ROLE_ADMIN')){
+                  <a routerLink="admin" class="sub-menu-link">
+                      <i class="fa-solid fa-user-tie"></i>
+                      <p>Admin</p>
+                  </a>
+                }
+                <a class="sub-menu-link-5" data-bs-toggle="modal" data-bs-target="#exampleModale">
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                  <p>Déconnexion</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        } @else {
+          <button class=" btn-connexion" type="submit" routerLink="login">Se connecter</button>
+        }
+        <button class="btn btn-panier p-2 d-flex align-items-center" routerLink="user/cart">
+          <i class="fa-solid fa-cart-shopping me-1"></i>
+          <p class="m-0">Panier</p>
+        </button>
+      </div>
+    </div>
+
+    <div class="modal fade" id="exampleModale" tabindex="-1" aria-labelledby="exampleModaleLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h3>Voulez-vous vraiment vous déconnecter ?</h3>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
+            <button type="button" class="btn btn-clear" (click)="logout()" data-bs-dismiss="modal">Déconnexion</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+}
+@else
+{
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="accueil"><img src="images/logo.png" class="logo"/></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" routerLink="accueil">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="marches">Marchés</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="produits">Produits</a>
+          </li>
+        </ul>
+        <div>
+          <!-- Barre de recherche -->
+          <form class="d-flex" (ngSubmit)="search(searchForm.value)">
+            <input
+              class="search-input me-1"
+              type="search"
+              placeholder="Rechercher..."
+              aria-label="Search"
+              [formControl]="searchForm"
+            />
+          </form>
+
+          <!-- Résultats de la recherche -->
+          <div class="position-relative d-flex flex-column">
+            @if (searchResults.length > 0) {
+              <ul class="search-results p-0">
+                @for (result of searchResults; track $index) {
+                  <li (click)="navigateToResult(result.id)">
+                    <div class="image-marche" [style.backgroundImage]="'url(' + urlImg + result.imageFileName + ')'"></div>
+                    <p>{{ result.productName || result.marcheName || result.nameBusiness }}</p>
+                  </li>
+                }
+              </ul>
+            }
+          </div>
+        </div>
+        @if (isLoggedIn()){
+          <!-- Menu DropDown -->
+          <div class="profile">
+            <img [src]="urlImg + user.imageFileName" class="user-pic"  (click)="toggleMenu()">
+            <div class="sub-menu-wrap" #subMenu>
+              <div class="sub-menu">
+                <div class="user-info">
+                  <img [src]="urlImg + user.imageFileName">
+                  <h3>{{ user.userName }}</h3>
+                </div>
+                <hr>
+
+                <a href="user/profil/:id" class="sub-menu-link">
+                  <i class="fa-solid fa-user"></i>
+                  <p>Profil</p>
+                </a>
+                <a href="user/command-history" class="sub-menu-link">
+                  <i class="fa-solid fa-store"></i>
+                  <p>Commandes</p>
+                </a>
+                <a href="user/comments" class="sub-menu-link">
+                  <i class="fa-solid fa-comment"></i>
+                  <p>Avis</p>
+                </a>
+                @if (hasRole('ROLE_ADMIN')){
+                  <a routerLink="admin" class="sub-menu-link">
+                      <i class="fa-solid fa-user-tie"></i>
+                      <p>Admin</p>
+                  </a>
+                }
+                <a class="sub-menu-link-5" data-bs-toggle="modal" data-bs-target="#exampleModale">
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                  <p>Déconnexion</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        } 
+        @else {
+          <button class=" btn-connexion" type="submit" routerLink="login">Se connecter</button>
+        }
+          
+        <a class="btn btn-panier p-2 d-flex align-items-center" routerLink="../../user/cart">
+          <i class="fa-solid fa-cart-shopping me-1"></i>
+          <p class="m-0">Panier</p>
+        </a>
+      </div>
+    </div>
+    
+    <div class="modal fade" id="exampleModale" tabindex="-1" aria-labelledby="exampleModaleLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h3>Voulez-vous vraiment vous déconnecter ?</h3>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
+            <button type="button" class="btn btn-clear" (click)="logout()" data-bs-dismiss="modal">Déconnexion</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</nav>
+}

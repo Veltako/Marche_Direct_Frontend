@@ -1,0 +1,289 @@
+nav 
+{
+    background-color: #132a13 !important;
+
+}
+.nav-item .dropdown-toggle {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-item img {
+    margin-right: 8px; /* Espace entre l'image et le texte */
+  }
+.navbar-toggler
+{
+    background-color: #FEFAE0;
+    color: #FEFAE0;
+}
+.navbar-brand 
+{
+    height: 60px;
+}
+nav a 
+{
+    color: #FEFAE0;
+}
+.logo
+{
+    width: 47px;
+}
+.btn-connexion 
+{
+    background-color: #4F772D;
+    padding: 7px;
+    border-radius: 5px;
+    border: 1px solid #838383;
+    color: #FEFAE0;
+}
+.btn-panier{
+    background-color: #132a13;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #838383;
+    color: #FEFAE0;
+    width: fit-content;
+}
+
+.btn-panier:hover {
+    background-color: #4F772D;
+}
+/* Style de la boîte de recherche */
+.search-container {
+  position: relative;
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  min-width: 250px; /* Limite de largeur */
+  border: 1px solid #4F772D; /* Bordure vert foncé */
+  border-radius: 4px;
+  font-size: 16px;
+  color: #132A13; /* Texte noir/vert */
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #90A955; /* Bordure verte claire au focus */
+  box-shadow: 0 0 5px rgba(144, 169, 85, 0.5);
+}
+
+/* Style du dropdown des résultats */
+.search-results {
+  position: absolute;
+  background-color: #FEFAE0; /* Blanc légèrement cassé */
+  border: 1px solid #90A955; /* Bordure verte claire */
+  border-radius: 4px;
+  max-height: 250px; /* Limite de hauteur */
+  overflow-y: auto;
+  width: 100%;
+  z-index: 1000;
+  top: 100%; /* Place le dropdown juste sous l'input */
+  left: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+}
+
+/* Style des items dans le dropdown */
+.search-results li {
+  padding: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  border-bottom: 1px solid #90A955; /* Séparation entre les éléments */
+}
+
+/* Image dans chaque item */
+.image-marche {
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  margin-right: 10px;
+  border: 2px solid #4F772D; /* Bordure autour de l'image */
+}
+
+/* Texte des résultats */
+.search-results p {
+  margin: 0;
+  font-size: 16px;
+  color: #132A13; /* Texte noir/vert */
+}
+
+/* Survol des items */
+.search-results li:hover {
+  background-color: #90A955; /* Vert clair au survol */
+  color: white;
+}
+
+/* Sélection active */
+.search-results li:active {
+  background-color: #4F772D; /* Vert foncé quand cliqué */
+  color: white;
+}
+
+/* Pour gérer la hauteur maximale du dropdown */
+.search-results::-webkit-scrollbar {
+  width: 8px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  background-color: #4F772D; /* Couleur du scroll */
+  border-radius: 4px;
+}
+
+.search-results::-webkit-scrollbar-track {
+  background-color: #FEFAE0;
+}
+/* Style pour le menu dropdown */
+.user-pic
+{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin : 10px;
+}
+.sub-menu-wrap
+{
+  position: absolute;
+  top: 100%;
+  right: 2%;
+  width: 320px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s;
+  z-index: 1000;
+}
+.sub-menu-wrap.open-menu
+{
+  max-height: 460px; /* Ajuste la hauteur pour le déroulement */
+}
+.sub-menu
+{
+  background: #f6f4e3;
+  border: 1px solid #838383;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.sub-menu hr
+{
+  border: 0;
+  height: 1px;
+  width: 100%;
+  background: #838383;
+  margin: 15px 0 10px;
+}
+.user-info
+{
+  display: flex;
+  align-items: center;
+}
+.user-info h3
+{
+  font-weight: 300;
+  color: #132A13;
+}
+.user-info img
+{
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+.sub-menu-link
+{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin: 12px 0;
+  transition: color 0.3s ease; /*transition de couleur*/
+}
+.sub-menu-link p
+{
+  width: 100%;
+  color: #132A13;
+}
+.sub-menu-link i
+{
+  width: 40px;
+  background: #90A955;
+  border-radius: 50%;
+  padding: 10px;
+  margin-right: 15px;
+  transition: color 0.3s ease; /*transition de couleur*/
+}
+.sub-menu-link:hover i 
+{
+  background: #4F772D;
+}
+.sub-menu-link:hover p
+{
+  font-weight: 600;
+  color: #4F772D;
+}
+.sub-menu-link-5
+{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  margin: 12px 0;
+  transition: color 0.3s ease; /*transition de couleur*/
+  cursor: pointer;
+}
+.sub-menu-link-5 p
+{
+  width: 100%;
+  color: #132A13;
+}
+.sub-menu-link-5 i
+{
+  width: 40px;
+  background: #90A955;
+  border-radius: 50%;
+  padding: 10px;
+  margin-right: 15px;
+  transition: color 0.3s ease; /*transition de couleur*/
+}
+.sub-menu-link-5:hover i 
+{
+  background: #4F772D;
+}
+.sub-menu-link-5:hover p
+{
+  font-weight: 600;
+  color: #4F772D;
+}
+.modal-content
+{
+  background-color: #FEFAE0;
+}
+.modal-content h3
+{
+  color: #132a13;
+}
+.btn-secondary 
+{
+  background: #132a13;
+  color: #FEFAE0;
+  font-weight: 400;
+}
+.btn-secondary:hover 
+{
+  background-color: #4F772D;
+}
+.btn-clear
+{
+  background-color: #BC4749;
+  color: #FEFAE0;
+}
+.btn-clear:hover 
+{
+  background-color: #7d292a;
+}

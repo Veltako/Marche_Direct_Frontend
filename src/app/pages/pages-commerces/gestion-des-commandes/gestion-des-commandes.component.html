@@ -1,0 +1,51 @@
+<div class="container mt-5">
+    <!-- Message de bienvenue -->
+    <div class="row">
+      <div class="col text-center">
+        <h1>Bienvenue, {{ user?.userName}} !</h1>
+      </div>
+    </div>
+  
+   <!-- Historique de commandes -->
+   <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h2>Retrouvez vos Commandes</h2>
+        
+        <div *ngIf="commands.length > 0; else noCommands">
+          <div *ngFor="let command of commands" class="card mb-3">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="card-title">Commande N° {{ command.id }}</h5>
+                    <select name="" id="">
+                        @for (etat of etats; track $index) {
+                            <option value="{{etat.id}}">{{etat.name}}</option>
+                        }
+                    </select>
+                </div>
+                <p><strong>Produits commandés:</strong></p>
+                <p>État de la commande: <strong>{{ command.etat.name }}</strong></p>
+            
+                <div *ngFor="let produit of command.produits" class="d-flex align-items-center mb-2">
+                    <!-- Image du produit -->
+                    <img [src]="'/images/' + produit.imageFileName" alt="Produit Image" style="width: 80px; border-radius: 5px; margin-right: 10px;">
+                    <!-- Détails du produit en ligne -->
+                    <div class="d-flex flex-column flex-md-row align-items-md-center">
+                        <span class="me-md-3">Nom du produit: <strong>{{ produit.productName }}</strong></span>
+                        <span class="me-md-3">Quantité: <strong>1</strong></span>
+                        <span class="me-md-3">Prix: <strong>{{ produit.prix | number:'1.2-2' }}€ {{ produit.format.name }}</strong></span>
+                        <span class="me-md-3">Prix total: <strong>{{ produit.prix * produit.stock | number:'1.2-2' }}€</strong></span>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Si aucune commande trouvée -->
+        <ng-template #noCommands>
+          <p>Aucune commande trouvée.</p>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  </div>

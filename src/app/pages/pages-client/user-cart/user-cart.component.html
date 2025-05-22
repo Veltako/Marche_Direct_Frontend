@@ -1,0 +1,118 @@
+<div class="container mt-5">
+  @if (message) {
+    <div class="alert alert-info text-center">
+      {{message}}
+    </div>
+  }
+  <div class="d-flex justify-content-center">
+    @if (cartItems.length > 0) {
+    <div class="d-flex flex-column cards">
+      @for (commercant of commercants; track $index) {
+      <div class="d-flex flex-column me-3 mb cards">
+        <div class="card color-white d-flex flex-row align-items-center border-radius card-commercant">
+          <img [src]="urlImg + commercant.imageFileName" alt="{{ commercant.nameBusiness }}" class="image" width="100">
+          <h3 class="text-center m-3"><strong>{{ commercant.nameBusiness }}</strong></h3>
+        </div>
+        @for (item of cartItems; track $index) {
+        @if (item.commercant === commercant.id) {
+        <div class="card mt-3 color-white d-flex flex-row align-items-center border-radius justify-content-between">
+          <div class="d-flex align-items-center col-4">
+            <div class="image" [style.backgroundImage]="'url(' + urlImg + item.imageFileName + ')'"></div>
+            <div class="d-flex flex-column ms-2">
+              <h4><strong>{{ item.productName }}</strong></h4>
+              <p><strong>Prix: </strong>{{ item.price | number:'1.2-2'}} €</p>
+            </div>
+          </div>
+          <div class="d-flex align-items-center col-2">
+            <select name="select" class="form-control me-2" id="select" (change)="updateCartItem(item ,$event)">
+              <option selected value="{{item.quantity}}">{{item.quantity}}</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <button class="fa-regular fa-trash-can btn btn-clear p-2" (click)="removeFromCart(item)"></button>
+          </div>
+          <p class="text-end m-0 pe-2 col-2"><strong>Total: {{ item.price * item.quantity | number:'1.2-2'}} €</strong>
+          </p>
+        </div>
+        }
+        }
+      </div>
+      }
+    </div>
+    <div class="d-flex flex-column color-white border-radius p-3 panel-commander mt-3">
+      <h2 class="text-center mb-5">Valider votre commande</h2>
+      @for (item of commercants; track $index) {
+        <h5 class="border-bottom text-center mb-2 pb-2"><strong>{{ item.nameBusiness }}</strong></h5>
+        <!-- Sélecteur de marché pour chaque commerçant -->
+        <label for="marketSelect-{{ item.id }}">Choisir un marché :</label>
+        <select
+          id="marketSelect-{{ item.id }}"
+          [(ngModel)]="selectedMarkets[item.id]"
+          (change)="onMarketSelect(item.id, selectedMarkets[item.id])"
+          name="marketSelect-{{ item.id }}"
+        >
+          <option [value]="null" disabled selected>Choisissez un marché</option>
+          <!-- Boucle sur les marchés disponibles pour le commerçant -->
+          @for (marche of commercantMarches[item.id]; track $index) {
+            <option [value]="marche.id">
+              {{ marche.marcheName }}
+            </option>
+          }
+        </select>
+
+        <!-- Si un marché est sélectionné, affiche les jours correspondants -->
+        @if (selectedMarkets[item.id]) {
+          <label for="daySelect-{{ item.id }}">Choisir un jour :</label>
+          <select id="daySelect-{{ item.id }}" [(ngModel)]="selectedDay[item.id]">
+            <option [value]="null" disabled selected>Choisissez un jour</option>
+            <!-- Boucle sur les jours du marché sélectionné -->
+            @for (day of getSelectedMarketDays(item.id); track $index) {
+              <option [value]="day.id">
+                {{ day.name }}
+              </option>
+            }
+          </select>
+        }
+        <div class="d-flex justify-content-between">
+          <p>Nombre d’articles:</p>
+          <p>{{ getTotalItemByMerchant(item.id) }}</p>
+        </div>
+        <div class="d-flex justify-content-between border-bottom">
+          <p>Total :</p>
+          <p>{{ getTotalPriceByMerchant(item.id) }}</p>
+        </div>
+      }
+      <h5 class="text-center mt-2">Nombre d’articles Total: {{ getTotalItems() }}</h5>
+      <h3 class="text-center mt-2">Total général: {{ getTotalPrice() }}</h3>
+      <div class="d-flex flex-column">
+        <button class="btn btn-pagination mt-4" (click)="newCommande()">Commander</button>
+        <button class="btn btn-clear mt-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Vider le panier</button>
+      </div>
+    </div>
+    } @else {
+    <div class="d-flex flex-column align-items-center">
+      <i class="fa-solid fa-bag-shopping sac"></i>
+      <h2 class="mb-3 mt-5">Votre panier est vide</h2>
+      <p class="mb-4">Parcourez notre catalogue et ajoutez des articles à votre panier pour les voir ici.</p>
+      <a class="btn btn-pagination" routerLink="../../produits">Retourner au Produits</a>
+    </div>
+    }
+  </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h3>Voulez-vous vraiment vider votre panier ?</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-clear" (click)="clearCart()" data-bs-dismiss="modal">Vider le
+          panier</button>
+      </div>
+    </div>
+  </div>
+</div>

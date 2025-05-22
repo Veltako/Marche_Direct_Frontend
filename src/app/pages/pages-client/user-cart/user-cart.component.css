@@ -1,0 +1,58 @@
+.color-white {
+    background-color: #FEFAE0;
+}
+
+.image {
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px 0 0 15px;
+    height: 100px;
+    width: 50%;
+    margin: 0;
+}
+.card {
+    padding: 5px;
+    box-shadow: 5px 5px 5px rgba(79, 79, 79, 0.5);
+}
+.cards {
+    flex: 2;
+}
+.mb{
+    margin-bottom: 100px;
+}
+.border-radius {
+    border-radius: 20px;
+}
+.panel-commander {
+    flex: 1;
+    height: fit-content;
+    margin-left: 50px;
+}
+.btn-clear{
+    background-color: #BC4749;
+    border-radius: 5px;
+    border: 1px solid #838383;
+    color: #FEFAE0;
+}
+.btn-clear:hover {
+    background-color: #973436;
+}
+.btn-pagination{
+    background-color: #132a13;
+    border-radius: 5px;
+    border: 1px solid #838383;
+    color: #FEFAE0;
+}
+.btn-pagination:hover{
+    background-color: #4F772D;
+}
+.whith100{
+    width: 100%;
+}
+.card-commercant{
+    width: fit-content;
+}
+.sac{
+    font-size: 10rem;
+    color: #132a13;
+}

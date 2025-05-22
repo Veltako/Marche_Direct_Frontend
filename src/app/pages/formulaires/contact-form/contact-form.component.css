@@ -1,0 +1,49 @@
+.divContainer{
+    margin-top: 15px;
+}
+.form-group{
+    width: 550px;
+    background-color: #FEFAE0;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+}
+.form-control{
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+}
+p{
+    margin: 0;
+}
+.form-label{
+    border-color: #838383;
+}
+.text-danger 
+{
+    display: block;
+    color: #BC4749;
+}
+.text-success 
+{
+    display: block;
+    color: #4F772D;
+}
+.form-check-input 
+{
+    border: #4F772D 1px solid;
+    margin-right: 5px;
+}
+.form-check-input:checked
+{
+    background-color: #4F772D;
+}
+.form-check-input:focus 
+{
+    outline: 0;
+    box-shadow:0 0 0 0.25rem #50772d82;
+}
+.envoyer
+{
+    background-color: #4F772D;
+    color: #FEFAE0;
+}
+.required-asterisk {
+    color: red;
+}

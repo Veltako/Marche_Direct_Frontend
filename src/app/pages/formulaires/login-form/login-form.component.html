@@ -1,0 +1,58 @@
+<div class="container d-flex justify-content-center align-items-center divContainer">
+  <form class="form-group card text-center" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="card-header">
+      <p class="fs-5">Connexion</p>
+    </div>
+    <div class="card-body m-3">
+      @if (submitted && loginForm.invalid)
+      {
+          <div class="alert alert-danger">
+              {{ message }} Veuillez remplir correctement le formulaire avant de l'envoyer.
+          </div>
+      }
+      @if (message) 
+      {
+          <div class="alert alert-success">
+              Votre formulaire s'est envoyé avec succès !
+          </div>
+      }
+      <div class="mb-3 text-start">
+        <label for="exampleInputEmail1" class="form-label">Email :</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email@example.com" formControlName="email">
+        @if (submitted && email.invalid) 
+        { 
+            <div class="text-danger">
+                email invalide.
+            </div>
+        }
+        @if (email.valid) 
+        {
+            <div class="text-success">
+                email valide.
+            </div>
+        }
+      </div>
+      <div class="mb-3 text-start">
+        <label for="exampleInputPassword1" class="form-label">Mot de passe :</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+        @if (submitted && password.invalid) 
+          {
+            <div class="text-danger">
+              Mot de passe invalide.
+            </div>
+          }
+          @if (password.valid) 
+          {
+            <div class="text-success">
+              Mot de passe valide.
+            </div>
+          }
+      </div>
+      <div class="d-flex flex-column text-start mb-3">
+        <a class="mb-1 oublie" routerLink = "../reset-password-request">Mot de passe oublié ?</a>
+        <a class="register-link" routerLink="../register">Pas encore inscrit ? S'enregistrer !</a>
+      </div>
+      <button class="btn connection">Se connecter</button>
+    </div>
+  </form>
+</div>

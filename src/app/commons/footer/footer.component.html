@@ -1,0 +1,13 @@
+<footer>
+    <ul class="lien d-flex align-items-center">
+        <li><a class="footer-logo" href="accueil"><img src="images/logo.png" alt="logofooter"></a></li>
+        <li><p class="copyright">&copy; 2024 Marché Direct</p></li>
+        <li><a routerLink="mention">Mentions Légales</a></li>
+        <li><a routerLink="rgpd">RGPD</a></li>
+        <li><a routerLink="contact">Contactez-nous</a></li>
+        <li><a routerLink="cgv">Conditions générales de vente</a></li>
+        @if (hasRole('ROLE_COMMERCANT')){
+            <li><a routerLink="commerce/accueil">Accès à l'espace commerçant</a></li>
+        }
+    </ul>
+</footer>

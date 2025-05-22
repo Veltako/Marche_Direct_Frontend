@@ -1,0 +1,90 @@
+<div class="container d-flex justify-content-center align-items-center divContainer">
+    <form class="form-group card text-center" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="card-header">
+            <p class="fs-5">Inscription</p>
+        </div>
+        <div class="card-body m-3">
+            @if (submitted && registerForm.invalid)
+            {
+            <div class="alert alert-danger">
+                Veuillez remplir correctement le formulaire avant de l'envoyer.
+            </div>
+            }
+            @if (message)
+            {
+            <div class="alert alert-success">
+                Votre inscription est un succès !
+            </div>
+            }
+            <div class="mb-3 text-start">
+                <label for="exampleInputEmail1" class="form-label">Email :</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="email@example.com" formControlName="email">
+                @if (submitted && email.invalid)
+                {
+                <div class="text-danger">
+                    email invalide.
+                </div>
+                }
+                @if (email.valid)
+                {
+                <div class="text-success">
+                    email valide.
+                </div>
+                }
+            </div>
+            <div class="mb-3 text-start">
+                <label for="exampleInputPassword1" class="form-label">Mot de passe :</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+                @if (submitted && password.invalid)
+                {
+                <div class="text-danger">
+                    Mot de passe invalide.
+                </div>
+                }
+                @if (password.valid)
+                {
+                <div class="text-success">
+                    Mot de passe valide.
+                </div>
+                }
+            </div>
+            <div class="mb-3 text-start">
+                <label for="exampleInputName" class="form-label">Nom :</label>
+                <input type="text" class="form-control" id="exampleInputName" formControlName="username">
+                @if (submitted && userName.invalid)
+                {
+                <div class="text-danger">
+                    Nom invalide (min. 3 caractères).
+                </div>
+                }
+                @if (userName.valid)
+                {
+                <div class="text-success">
+                    Nom valide.
+                </div>
+                }
+            </div>
+            <div class="mb-3 text-start">
+                <label for="exampleInputTel" class="form-label">Tel :</label>
+                <input type="tel" class="form-control" id="exampleInputTel" formControlName="tel">
+                @if (submitted && tel.invalid)
+                {
+                <div class="text-danger">
+                    Numéro de téléphone invalide.
+                </div>
+                }
+                @if (tel.valid)
+                {
+                <div class="text-success">
+                    Numéro de téléphone valide.
+                </div>
+                }
+            </div>
+            <div class="d-flex flex-column text-start mb-3">
+                <a class="register-link" routerLink="../login">Déjà inscrit ? Se connecter !</a>
+            </div>
+            <button class="btn connection">S'inscrire</button>
+        </div>
+    </form>
+</div>

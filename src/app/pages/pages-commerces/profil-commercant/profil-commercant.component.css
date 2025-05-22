@@ -1,0 +1,49 @@
+.card {
+    background-color: #FEFAE0;
+    box-shadow: 5px 5px 5px rgba(79, 79, 79, 0.5);
+    height: 380px;
+    display: flex;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #FEFAE0;
+}
+
+.card-image {
+    width: 380px;
+}
+
+.disable {
+    cursor: default;
+}
+
+.card-info-perso {
+    width: 380px;
+}
+
+.text-card {
+    margin: 10px;
+    width: 90%;
+    height: calc(380px - 50px);
+    justify-content: space-around;
+    align-items: start;
+}
+
+.w-img {
+    width: 355px;
+    height: 310px;
+    border-radius: 5px;
+    margin-top: 12.5px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.btn-border {
+    position: absolute;
+    height: 50px !important;
+    bottom: 0;
+    border-top: 1px solid #838383;
+    border-radius: 0;
+}

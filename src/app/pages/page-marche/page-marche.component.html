@@ -1,0 +1,41 @@
+<div class="marche-commercant">
+    <div class="box-unMarché">
+        <div class="card">
+            <div class="image-text">
+                <div class="image-marche" [style.backgroundImage]="'url(' + urlImg + marche.imageFileName + ')'"></div>
+                <div class="marche-description">
+                    <div class="card-text">
+                        <div class="info-marche">
+                            <h1 class="nom-marché">{{marche.marcheName}}</h1>
+                                <p class="description">{{marche.description}}</p>
+                                <p class="lieu-marche">Adresse : <strong>{{marche.place}}</strong></p>
+                        </div>
+                        <div class="jours">
+                        <h5 class="jour-marché">Jours du marché et horaire :</h5>
+                            @for (day of marche.days; track $index) 
+                                {
+                                            <p class="jour-marché me-1">{{day.name}} : De {{marche.hourly}}</p>
+
+                                }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-commercants">
+        <div class="tout-commercant">
+            @for (commercant of marche.commercant_marche; track $index) 
+            {
+                <div class="carte" routerLink="../../marchants/{{commercant.id}}">
+                    <div class="image-commercant" [style.backgroundImage]="'url(' + urlImg + commercant.imageFileName + ')'"></div>
+                        <div class="card-body">
+                            <h5 class="commercant-text">{{commercant.nameBusiness}}</h5>
+                            <p class="commercant-text">{{removeDivTags(commercant.descriptionCommerce)}}</p>
+                            <p class="commercant-text">Numéro de siret : {{commercant.numSiret}}</p>
+                        </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

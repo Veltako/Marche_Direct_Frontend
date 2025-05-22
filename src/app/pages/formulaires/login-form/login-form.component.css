@@ -1,0 +1,28 @@
+.form-group{
+    width: fit-content;
+    background-color: #FEFAE0;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+}
+.form-control{
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+}
+.divContainer{
+    height: 83.8vh;
+}
+p{
+    margin: 0;
+}
+.form-label{
+    border-color: #838383;
+}
+.register-link{
+    color: #78C381;
+}
+.oublie{
+    text-decoration: none;
+    color: #212529;
+}
+.connection{
+    background-color: #78C381;
+    color: #FEFAE0;
+}

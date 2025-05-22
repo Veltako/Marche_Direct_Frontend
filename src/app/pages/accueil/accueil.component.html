@@ -1,0 +1,43 @@
+<div class="body-accueil">
+  <div class="box-banniere">
+    <div class="box-text">
+      <h3>Le marché près de chez vous, sans bouger de chez vous !</h3>
+      <br>
+      <h4>Qui sommes-nous :</h4>
+      <p>MarchéDirect est une plateforme innovante qui connecte les clients aux marchés locaux, en facilitant l'accès
+        aux produits frais et de qualité.
+        <br>Grâce à notre site, vous pouvez parcourir une vaste sélection de produits proposés par vos commerçants
+        locaux, passer commande en ligne, et récupérer vos achats directement au marché.
+        <br>Plus besoin de faire la file ou de manquer les meilleurs produits — tout est à portée de clic.
+        <br>Que vous cherchiez des fruits et légumes de saison, des spécialités artisanales ou des produits du terroir,
+        MarchéDirect vous simplifie la vie en vous offrant une solution pratique, rapide et locale pour faire vos
+        courses.
+        <br>Découvrez une nouvelle façon de faire vos achats tout en soutenant vos commerçants de proximité !
+      </p>
+    </div>
+  </div>
+  <div class="tout-marches">
+    @defer(){
+    @for (item of marches; track $index)
+    {
+    <div class="card" routerLink="/marches/{{item.id}}">
+      <div class="image-marche" [style.backgroundImage]="'url(' + imgUrl + item.imageFileName + ')'"></div>
+      <div class="card-body">
+        <h5 class="marche-text">{{item.marcheName}}</h5>
+        <p class="marche-text">{{item.hourly}}</p>
+      </div>
+    </div>
+    }
+    }
+    @error {
+    <span>Error</span>
+    }
+    @loading(minimum 1s) {
+    <div class="loader" id="loader-4">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    }
+  </div>
+</div>

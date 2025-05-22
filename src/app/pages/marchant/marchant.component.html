@@ -1,0 +1,91 @@
+<div class="body-marches m-0 ">
+    <div class="tout-marches row m-4">
+        <h1 class="text-center">Produits de {{user.nameBusiness}}</h1>
+        @defer(){
+            @for (item of user.produits; track $index) 
+            {
+                @if (item.stock > 0)
+                {
+                    <div class="card col-3 m-3 mt-5">
+                        <div class="image-marche" [style.backgroundImage]="'url(' + urlImg + item.imageFileName + ')'"></div>
+                        <div class="card-body d-flex align-items-center justify-content-between">
+                            <h4 class="marche-text m-0">{{item.productName}}</h4>
+                            <p class="marche-text me-2"><strong>prix : </strong>{{item.prix | number:'1.2-2'}}€ {{item.format.name}}</p>
+                            <p class="marche-text me-2"><strong>stock : </strong>{{item.stock}}</p>
+                            <button class="fa-solid fa-cart-shopping btn btn-pagination p-2" aria-label="Bouton de commande" [attr.data-bs-target]="'#modalMockup' + item.id" data-bs-toggle="modal" type="button"></button>
+                        </div>
+                    </div>
+                    <div class="modal" tabindex="-1" [id]="'modalMockup' + item.id" role="dialog">
+                        <div class="modal-dialog ">
+                            <div>
+                                <div class="image-marche" [style.backgroundImage]="'url(' + urlImg + item.imageFileName + ')'"></div>
+                            </div>
+                            <div class="modal-content">
+                                <div class="modal-body color-modal">
+                                    <h1>{{item.productName}}</h1>
+                                    <p><strong>Prix: </strong> {{item.prix | number:'1.2-2'}}€ {{item.format.name}}</p>
+                                    <p><strong>Stock: </strong> {{item.stock}}</p>
+                                    <p class="mb-4"><strong>Description: </strong> {{removeDivTags(item.description)}}</p>
+                                    <form action="">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Quantité</label>
+                                            <select class="form-control" id="Select" (change)="changePrice($event)">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                            </select>
+                                        </div>
+                                    </form>
+                                    <p class="mt-2 text-end">Prix total: {{selectedQuantity * item.prix | number:'1.2-2'}} €</p>
+                                </div>
+                                <div class="modal-footer color-modal">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                    <button type="button" class="btn btn-pagination p-2" (click)="addToCart(item)" data-bs-dismiss="modal">Ajouter au panier</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+        @error {
+            <span>Error</span>
+        }
+        @loading(minimum 1s) {
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div> 
+        }
+    </div>
+    @if (cartItems.length > 0)
+    {
+        <div class="cart-summary d-flex flex-column align-items-center col-1">
+            @for (item of cartItems; track $index) {
+                <div class="cart-item pt-2 d-flex flex-column justify-content-center align-items-center pb-2">
+                    <img [src]="urlImg + item.imageFileName" alt="{{ item.productName }}" class="img-fluid pb-2" width="100">
+                    <p><strong>{{ item.productName }}</strong></p>
+                    <p><strong>Prix: </strong>{{ item.price | number:'1.2-2'}} €</p>
+                    <div class="d-flex">
+                        <select name="select" class="form-control" id="select" (change)="updateCartItem(item ,$event)">
+                            <option selected value="{{item.quantity}}">{{item.quantity}}</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <button class="fa-regular fa-trash-can btn btn-clear p-2" (click)="removeFromCart(item)"></button>
+                    </div>
+                </div>
+            }
+            <div class="pb-4 d-flex flex-column justify-content-flex-end align-items-center">
+                <p class="p-2 text-center"><strong>Nombres d’articles:</strong> {{ getTotalItems() }}</p>
+                <p class="p-2"><strong>Total:</strong> {{ getTotalPrice() }}</p>
+                <a class="btn btn-pagination" routerLink="../user/cart">Commander</a>
+                <button class="btn btn-clear" (click)="clearCart()">Vider le panier</button>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,77 @@
+.body-marches {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background-color: #FEFAE0;
+    box-sizing: border-box;
+    height: 200px;
+}
+
+.card-image {
+    display: flex;
+    align-items: center;
+    border-radius: 0;
+    width: 200px !important;
+}
+
+.image-marche {
+    background-size: cover;
+    background-position: center;
+    width: 125px;
+    height: 125px;
+    margin-left: 3rem;
+}
+
+.marche-text {
+    margin: 0;
+}
+
+.marche-text:first-child{
+    margin-bottom: 5px;
+}
+
+.marche-text:last-child{
+    margin-top: 5px;
+}
+
+.btn-danger {
+    background-color: #BC4749;
+    color: black;
+}
+
+.btn-primary{
+    background-color: #E5A823 !important;
+    border: none;
+    color: black;
+}
+
+.btn-primary:hover{
+    background-color: #d39c26 !important;
+}
+
+.btn-danger:hover {
+    background-color: #973436;
+}
+
+.modal-content {
+    background-color: #FEFAE0;
+}
+
+.btn-border {
+    position: absolute;
+    height: 50px !important;
+    bottom: 0;
+    border-top: 1px solid #8383836b;
+    border-radius: 0;
+}
+
+.w-img {
+    border-radius: 5px;
+    margin-top: 12.5px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

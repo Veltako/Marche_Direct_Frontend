@@ -1,0 +1,118 @@
+<div class="container d-flex justify-content-center align-items-center divContainer">
+    <form class="form-group card text-center" [formGroup]="contactForm" (ngSubmit)="envoyer()">
+        <div class="card-header">
+            <p class="fs-5">Contactez-nous !</p>
+        </div>
+        <div class="card-body m-3">
+            @if (submitted && contactForm.invalid) 
+            {
+                <div class="alert alert-danger">
+                    Veuillez remplir correctement le formulaire avant de l'envoyer.
+                </div>
+            }
+            @if (message) 
+            {
+                <div class="alert alert-success">
+                    Votre message a été envoyé avec succés !
+                </div>
+            }
+            <div class="mb-3 text-start">
+                <label for="" class="form-label">Pseudo<span class="required-asterisk">*</span></label>
+                <input type="text" class="form-control" formControlName="userName" required>
+                @if (submitted && userName.invalid) 
+                { 
+                    <div class="text-danger">
+                        Pseudo invalide (min. 3 caractères).
+                    </div>
+                }
+                @if (userName.valid) 
+                {
+                    <div class="text-success">
+                        Pseudo valide
+                    </div>
+                }
+            </div>
+            <div class="mb-3 text-start">
+                <label for="" class="form-label">Email<span class="required-asterisk">*</span></label>
+                <input type="email" class="form-control" formControlName="email">
+                @if (submitted && email.invalid) 
+                {
+                    <div class="text-danger">
+                        Veuillez entrer un email valide.
+                    </div>
+                }
+                @if (email.valid) 
+                {
+                    <div class="text-success">
+                        Email valide
+                    </div>
+                }
+            </div>
+            <div class="mb-3 text-start">
+                <label for="tel" class="form-label">Téléphone<span class="required-asterisk">*</span></label>
+                <input type="tel" class="form-control" formControlName="tel">
+                @if (submitted && tel.invalid) 
+                {
+                    <div class="text-danger">
+                        Numéro de téléphone invalide
+                    </div>
+                }
+                @if (tel.valid) 
+                {
+                    <div class="text-success">
+                        Numéro de téléphone valide
+                    </div>
+                }
+            </div>     
+            <div class="mb-3 text-start">
+                <label for="" class="form-label">Nom d'entreprise </label>
+                <input type="text" class="form-control" formControlName="nameBusiness">
+                @if (submitted && nameBusiness.invalid) 
+                {
+                    <div class="text-danger">
+                        Nom d'entreprise invalide
+                    </div>
+                }
+                @if (contactForm.get('nameBusiness')?.valid && contactForm.get('nameBusiness')?.value) 
+                {
+                    <div class="text-success">
+                        Nom d'entreprise valide
+                    </div>
+                }
+            </div>
+            <div class="mb-3 text-start">
+                <label for="" class="form-label">Message<span class="required-asterisk">*</span></label>
+                <textarea class="form-control" formControlName="comment"></textarea>
+                @if (submitted && comment.invalid) 
+                {
+                    <div class="text-danger">
+                        Veuillez remplir ce champ (min. 10 caractères). 
+                    </div>
+                }
+                @if (comment.valid) 
+                {
+                    <div class="text-success">
+                        Merci pour votre retour
+                    </div>
+                }
+            </div>
+            <div class="mb-3 text-start">
+                <input type="checkbox" class="form-check-input" formControlName="checkbox" required>
+                <label class="form-check-label"> Veuillez accepter nos conditions et modalités d'utilisation.</label>
+                @if (submitted && checkbox.invalid) 
+                {
+                    <div class="text-danger">
+                        Vous avez oublié de cocher cette case
+                    </div>
+                }
+                @if (checkbox.valid) 
+                {
+                    <div class="text-success">
+                        Merci d'avoir cocher
+                    </div>
+                }
+            </div>
+            <button class="btn envoyer" type="submit">Envoyer</button>
+        </div>
+    </form>
+</div>

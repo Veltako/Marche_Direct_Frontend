@@ -1,0 +1,70 @@
+<div class="container mt-5">
+  <!-- Message de bienvenue -->
+  <div class="row">
+    <div class="col text-center">
+      <h1>Bienvenue, {{ user?.userName}} !</h1>
+    </div>
+  </div>
+
+  <!-- Actions du user -->
+  <div class="row mt-4">
+    <div class="col text-center">
+      <a [routerLink]="['/user/cart']" class="btn btn-success mx-2" style="border:  1px solid #838383;">Voir votre Panier</a>
+      <a [routerLink]="['/user/comments', user?.id]" class="btn btn-success" style="border:  1px solid #838383;">Voir vos Avis</a>
+    </div>
+  </div>
+
+ <!-- Historique de commandes -->
+ <div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h2>Retrouvez vos Commandes</h2>
+      
+      <div *ngIf="commands.length > 0; else noCommands">
+        <div *ngFor="let command of commands" class="card mb-3">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <h5 class="card-title">Commande N° {{ command.id }}</h5>
+              <div>
+              <button class="btn-clear btn me-3" data-bs-toggle="modal" [attr.data-bs-target]="'#modalMockup' + command.id" >Annuler la commande</button>
+              <i class="fa-regular fa-message"></i>
+              </div>
+            </div>
+            <p><strong>Produits commandés:</strong></p>
+            <ul>
+              <li *ngFor="let produit of command.produits">
+                <p>Nom du produit: <strong>{{ produit.productName }}</strong></p>
+                <p>Quantité: <strong>{{ produit.format.name }}</strong></p>
+                <p>Prix: <strong>{{ produit.prix }}€</strong></p>
+                <img [src]="'/images/' + produit.imageFileName" alt="Produit Image" style="width: 80px; border-radius: 5px;">
+                <p>Acheté chez le commerçant: <strong> {{ command.UserCommande[0].nameBusiness}}</strong></p>
+                <p>Etat de la commande : <strong>{{ command.etat.name }}</strong></p>
+              </li>
+            </ul>
+          </div>
+          <div class="modal fade" [id]="'modalMockup' + command.id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <h3>Voulez-vous vraiment annuler la commande ?</h3>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                  <button type="button" class="btn btn-clear" (click)="cancelCommande(command.id!)" data-bs-dismiss="modal">Annuler la commande</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Si aucune commande trouvée -->
+      <ng-template #noCommands>
+        <p>Aucune commande trouvée.</p>
+      </ng-template>
+    </div>
+  </div>
+</div>
+</div>
+
+  

@@ -1,0 +1,109 @@
+.body-marches
+{
+    display: flex;
+    justify-content: center;
+    height: 84.5vh;
+}
+.tout-marches 
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 90%;
+}
+.card 
+{
+    text-decoration: none;
+    width: 28rem;
+    height: 15rem;
+    background-color: #FEFAE0;
+    padding: 7px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(79, 79, 79, 0.5);
+    margin: 20px 10px;
+}
+.image-marche 
+{
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    height: 150px;
+    width: 100%;
+    margin: 0;
+}
+p 
+{
+    margin: 0;
+}
+.marche-text
+{
+  text-align: center;  
+}
+.btn-page
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.btn-pagination{
+    background-color: #132a13;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #838383;
+    color: #FEFAE0;
+    width: fit-content;
+    height: fit-content;
+}
+.btn-pagination:hover{
+    background-color: #4F772D;
+}
+.color-modal{
+    background-color: #FEFAE0;
+    color: #132a13;
+}
+.cart-summary{
+    max-height: 84.5vh; 
+    overflow-y: auto; /* Activer le défilement vertical */
+    background-color: #FEFAE0;
+    overflow-x: hidden; 
+    box-sizing: border-box;
+}
+
+.btn-clear{
+    background-color: #BC4749;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #838383;
+    color: #FEFAE0;
+    width: fit-content;
+}
+.btn-clear:hover {
+    background-color: #973436;
+}
+.img-fluid{
+    border-radius: 10px;
+}
+.cart-item{
+    border-bottom: 1px solid #838383;
+    width: 100%;
+}
+
+@media screen and (max-width: 820px) 
+{
+    .body-marches 
+    {
+        width: auto;
+        height: auto;
+    }
+    .tout-marches
+    {
+        display: flex;
+        flex-direction: column;
+    }
+    .card 
+    {
+        width: auto;
+    }
+}

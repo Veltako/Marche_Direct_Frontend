@@ -1,0 +1,42 @@
+footer 
+{
+    background-color: #132a13;
+    color: #FEFAE0;
+    padding: 10px;
+    bottom: 0;
+    width: 100%;
+}
+img 
+{
+    width: 45px;
+}
+ul
+{
+    list-style-type: none;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+}
+.liens 
+{
+    padding: 5px 50px;
+}
+.copyright
+{
+   padding: 0 15px ;
+   margin: 0;
+}
+a
+{
+    text-decoration: none;
+    color: #FEFAE0;
+}
+
+@media screen and (max-width: 820px) {
+    footer {
+        position: static;
+    }
+    ul {
+        flex-direction: column;
+    }
+}
